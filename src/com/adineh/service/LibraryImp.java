@@ -1,4 +1,7 @@
-package com.adineh.app;
+package com.adineh.service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.adineh.entity.Book;
 import com.adineh.entity.Entity;
@@ -6,9 +9,17 @@ import com.adineh.entity.Member;
 import com.adineh.exceptions.EntityNotFoundException;
 
 public class LibraryImp implements Library {
+	
+	List<Member> memberList = new ArrayList<Member>();
+	List<Book> bookList = new ArrayList<Book>();
 
 	@Override
 	public void save(Entity entity) {
+		if(entity instanceof Member) {
+			
+		}else {
+			
+		}
 		
 	}
 

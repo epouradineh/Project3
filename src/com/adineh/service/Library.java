@@ -1,4 +1,4 @@
-package com.adineh.app;
+package com.adineh.service;
 
 import com.adineh.entity.Book;
 import com.adineh.entity.Entity;

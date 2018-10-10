@@ -1,16 +1,19 @@
 package com.adineh.app;
 
+import java.util.Scanner;
+
 public class Application {
 
 	private static int menuSelected;
+	static Scanner inScan = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		selectionHub(mainMenu());
 
 	}
 
-	private static void selectionHub(int mainMenu) {
-		switch (mainMenu) {
+	private static void selectionHub(int menuSelected) {
+		switch (menuSelected) {
 		case 1:
 			membersMenu();
 			break;
@@ -34,6 +37,8 @@ public class Application {
 		System.out.println("3) Find a Book");
 		System.out.println("4) Edit a Book");
 		System.out.println("5) Back to Main Menu");
+
+		
 	}
 
 	private static void membersMenu() {
@@ -50,6 +55,8 @@ public class Application {
 		System.out.println("1) Memebers Menu");
 		System.out.println("2) Books Menu");
 		System.out.println("3) Exit");
+		System.out.print("Enter Menu Item Number : ");
+		menuSelected = inScan.nextInt();
 		return menuSelected;
 	}
 
