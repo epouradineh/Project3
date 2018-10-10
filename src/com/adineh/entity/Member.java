@@ -17,7 +17,7 @@ public class Member extends Person {
 		this.name = name;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
