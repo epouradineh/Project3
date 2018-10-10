@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Application {
 
 	private static int menuSelected;
-	static Scanner inScan = new Scanner(System.in);
+	public static Scanner inScan = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		selectionHub(mainMenu());
