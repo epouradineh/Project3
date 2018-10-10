@@ -1,52 +1,44 @@
 package com.adineh.entity;
 
 import com.adineh.app.Application;
+import com.adineh.app.CheckCoreectInputs;
 import com.adineh.exceptions.BadEntityException;
+import com.adineh.service.LibraryImp;
 
-public class Member extends Person {
-
-	private String name;
-	private int age;
-	private Gender gender;
-
-	public String getName() {
-		return name;
+public class Member extends Person implements CheckCoreectInputs {
+	
+	public Member() {
+		
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public Member(String name, Integer age, Gender gender) {
+		super(name, age, gender);
 	}
 
-	public Integer getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public Gender getGender() {
-		return gender;
-	}
-
-	public void setGender(Gender gender) {
-		this.gender = gender;
-	}
-
+	private static Integer id = 10000;
+	private LibraryImp libraryImp;
+	
+	
+	
 	@Override
 	public Integer getID() {
-		// TODO Auto-generated method stub
-		return null;
+		return id;
 	}
 
 	@Override
 	public void readFromConsole() throws BadEntityException {
 		Member newMember = new Member();
+		newMember.id = id;
+		System.out.println("Enter Member Name: ");
 		newMember.setName(Application.inScan.next());
-		newMember.setAge(Application.inScan.nextInt());
-		newMember.setGender(getGender(Application.inScan.next().charAt(0)));
-
-
+		System.out.println("Enter Member Age: ");
+		newMember.setAge(correctIntegerReturn(Application.inScan));
+		System.out.println("Enter Member Gender \t***'Select m for Male and f for Female'***: ");
+		newMember.setGender(getGender(correctGenderSelectionReturn(Application.inScan)));
+		if(newMember instanceof Person) {
+			id++;
+			libraryImp.save(newMember);
+		}else throw new BadEntityException();
 	}
 
 	@Override
@@ -54,9 +46,9 @@ public class Member extends Person {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	private Gender getGender(char c) {
-		if(c=='m')
+		if (c == 'm')
 			return Gender.Male;
 		else
 			return Gender.Female;
